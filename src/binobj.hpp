@@ -10,17 +10,17 @@
 #include "utils.hpp"
 
 class Binobj{
-    const std::string JSON_FILE_DIRECTORY_PATH = "JSON_FILES";
+    const std::filesystem::path JSON_FILE_DIRECTORY_PATH = "JSON_FILES";
     private:
-        std::string FILE_PATH;
+        const std::filesystem::path FILE_PATH;
         std::vector<uint8_t> file;
         std::size_t file_size;
 
         std::string json_file_id;
-        std::string JSON_FILE_PATH;
+        std::filesystem::path JSON_FILE_PATH;
 
     public:
-        Binobj(std::string FILE_PATH_): FILE_PATH(FILE_PATH_){
+        Binobj(const std::filesystem::path FILE_PATH_): FILE_PATH(FILE_PATH_){
 
             std::filesystem::create_directories(JSON_FILE_DIRECTORY_PATH);
             std::ifstream binfile(FILE_PATH,std::ios::binary|std::ios::ate);
@@ -37,11 +37,15 @@ class Binobj{
             file=file_;
 
             json_file_id = Utils::generateUUIDv4();
-            std::ofstream file_json(JSON_FILE_DIRECTORY_PATH+"/" +json_file_id+".json");
+            JSON_FILE_PATH = JSON_FILE_DIRECTORY_PATH.string()+"/"+json_file_id+".json";
+            std::ofstream file_json(JSON_FILE_PATH);
             if(!file_json)
                 std::cout<<"JSON FILE: something went wrong";
-        }
-        
+        };
+        ~Binobj(){
+
+        };
+
 
 };
 #endif
