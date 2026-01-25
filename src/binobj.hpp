@@ -43,6 +43,7 @@ class Binobj{
                 std::cout<<"JSON FILE: something went wrong";
         };
         ~Binobj(){
+            //destruct obj, (delete file etc.)
 
         };
 
