@@ -2,6 +2,6 @@
 
 
 int main(){
-    Binobj mytestfile("include/binobj.hpp");
+    Binobj mytestfile("test.bin");
     std::cout<<"well worked";
 }
