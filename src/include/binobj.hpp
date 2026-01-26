@@ -31,9 +31,10 @@ class Binobj{
             std::streamsize file_size_ = binfile.tellg();
             assert(file_size_>=0);
             file_size = static_cast<std::size_t>(file_size_);
-            
+
             binfile.seekg(0,std::ios::beg);
-            std::vector<uint8_t> file_(file_size);
+            std::vector<uint8_t> file_;
+            file_.resize(file_size);
             if(!binfile.read(reinterpret_cast<char*>(file_.data()),file_size_)){
                 throw std::runtime_error("BIN Failed to read");
             }
@@ -52,6 +53,29 @@ class Binobj{
             }
         };
 
+        void hexdump(){
+            int meow=0;
+            for(auto& i :file){
+                if(meow%16==0)std::cout<<std::endl;
+                std::cout <<std::hex <<std::setw(2)<<std::setfill('0')<<static_cast<int>(i)<<" ";
+                meow++;
+            }
+        }
+        //getters/setters
+        std::size_t getFile_Size(){
+            return file_size;
+        }
+
 
 };
 #endif
+
+/*std::vector<char> file_(file_size);
+            for(int i{0};i<static_cast<int>(file_size/16);i++){
+                char meow =0;
+                binfile.seekg(i*16,std::ios::beg);
+                if(!binfile.read(reinterpret_cast<char*>(meow),16)){
+                    throw std::runtime_error("BIN Failed to read");
+                }
+            file_.push_back(meow);
+            }*/
