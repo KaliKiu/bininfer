@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include <filesystem>
+#include <cassert>
 
 #include "utils.hpp"
 
@@ -28,9 +29,11 @@ class Binobj{
                 std::cout<<"Binobj Constructor: File input failed"<<std::endl;
             }
             std::streamsize file_size_ = binfile.tellg();
-            file_size=file_size_;
+            assert(file_size_>=0);
+            file_size = static_cast<std::size_t>(file_size_);
+            
             binfile.seekg(0,std::ios::beg);
-            std::vector<uint8_t> file_(file_size_);
+            std::vector<uint8_t> file_(file_size);
             if(!binfile.read(reinterpret_cast<char*>(file_.data()),file_size_)){
                 throw std::runtime_error("BIN Failed to read");
             }
@@ -44,7 +47,9 @@ class Binobj{
         };
         ~Binobj(){
             //destruct obj, (delete file etc.)
-
+            if(!std::filesystem::remove(JSON_FILE_PATH)){
+                std::cout<<"Binobj Destructor: JsonFilefailed";
+            }
         };
 
 
