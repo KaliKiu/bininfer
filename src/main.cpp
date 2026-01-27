@@ -5,6 +5,8 @@ int main(){
     Binobj mytestfile("test.bin");
     std::cout << mytestfile.getFile_Size();
     mytestfile.hexdump();
+    
+    Function::ByteFrequencyMap(mytestfile);
 
     std::cout<<"well worked";
 }
