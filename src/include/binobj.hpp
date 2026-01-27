@@ -7,8 +7,10 @@
 #include <iostream>
 #include <filesystem>
 #include <cassert>
+#include <map>
 
 #include "utils.hpp"
+#include "functions.hpp"
 
 class Binobj{
     const std::filesystem::path JSON_FILE_DIRECTORY_PATH = "JSON_FILES";
@@ -19,6 +21,7 @@ class Binobj{
 
         std::string json_file_id;
         std::filesystem::path JSON_FILE_PATH;
+        std::unique_ptr<AnalysisContext> acx;
 
     public:
         Binobj(const std::filesystem::path FILE_PATH_): FILE_PATH(FILE_PATH_){
@@ -35,6 +38,8 @@ class Binobj{
             binfile.seekg(0,std::ios::beg);
             std::vector<uint8_t> file_;
             file_.resize(file_size);
+
+            //writes all data at once into *file[0]=file_.data(), vector then just interprets the 8bit blocks
             if(!binfile.read(reinterpret_cast<char*>(file_.data()),file_size_)){
                 throw std::runtime_error("BIN Failed to read");
             }
@@ -43,8 +48,9 @@ class Binobj{
             json_file_id = Utils::generateUUIDv4();
             JSON_FILE_PATH = JSON_FILE_DIRECTORY_PATH.string()+"/"+json_file_id+".json";
             std::ofstream file_json(JSON_FILE_PATH);
-            if(!file_json)
-                std::cout<<"JSON FILE: something went wrong";
+            if(!file_json)std::cout<<"JSON FILE: something went wrong";
+
+            acx = std::make_unique<AnalysisContext>();
         };
         ~Binobj(){
             //destruct obj, (delete file etc.)
@@ -57,25 +63,27 @@ class Binobj{
             int meow=0;
             for(auto& i :file){
                 if(meow%16==0)std::cout<<std::endl;
+                if(meow%2==0)std::cout<<" ";
                 std::cout <<std::hex <<std::setw(2)<<std::setfill('0')<<static_cast<int>(i)<<" ";
                 meow++;
             }
         }
-        //getters/setters
         std::size_t getFile_Size(){
             return file_size;
+        }
+        std::string getJson_File_Id(){
+            return json_file_id;
         }
 
 
 };
-#endif
+//Result holder + JsonFile writer
+class AnalysisContext{
+    private:
+        std::map<uint8_t,std::size_t> BinaryFrequency;
+    public:
+    AnalysisContext()=default;
+    AnalysisContext& operator=(const AnalysisContext& other){return *this;};
 
-/*std::vector<char> file_(file_size);
-            for(int i{0};i<static_cast<int>(file_size/16);i++){
-                char meow =0;
-                binfile.seekg(i*16,std::ios::beg);
-                if(!binfile.read(reinterpret_cast<char*>(meow),16)){
-                    throw std::runtime_error("BIN Failed to read");
-                }
-            file_.push_back(meow);
-            }*/
+};
+#endif
