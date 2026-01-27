@@ -6,8 +6,14 @@
 
 namespace Function{
 //holds all methods from Stage 1-Stage 5
-    std::map<uint8_t,std::size_t> ByteFrequencyMap(const Binobj binobj){
+    void ByteFrequencyMap(Binobj binobj){
+        std::map<uint8_t,std::size_t> map;
+        const auto& bin = binobj.getBinary();
+
+        for(auto& t : bin){
+            //dosmth
+        }
 
     }
-}
+};
 #endif
