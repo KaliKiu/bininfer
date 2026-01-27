@@ -83,7 +83,11 @@ class AnalysisContext{
         std::map<uint8_t,std::size_t> BinaryFrequency;
     public:
     AnalysisContext()=default;
-    AnalysisContext& operator=(const AnalysisContext& other){return *this;};
-
+    AnalysisContext& operator=(const AnalysisContext& other){
+        if(this!=&other){
+            BinaryFrequency=other.BinaryFrequency;
+        }
+        return *this;
+        }
 };
 #endif

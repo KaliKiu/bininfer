@@ -458,6 +458,7 @@ CMakeFiles/meow.dir/src/main.cpp.o: /Users/kali/Desktop/GitHub/bininfer/src/main
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/poll_with_backoff.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/timed_backoff_policy.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__threading_support \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_const.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_cv.h \
@@ -633,6 +634,7 @@ CMakeFiles/meow.dir/src/main.cpp.o: /Users/kali/Desktop/GitHub/bininfer/src/main
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/locale \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/locale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/math.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/memory \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/mutex \
@@ -801,14 +803,21 @@ CMakeFiles/meow.dir/src/main.cpp.o: /Users/kali/Desktop/GitHub/bininfer/src/main
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/share/asan_ignorelist.txt \
   /Users/kali/Desktop/GitHub/bininfer/src/include/binobj.hpp \
+  /Users/kali/Desktop/GitHub/bininfer/src/include/functions.hpp \
   /Users/kali/Desktop/GitHub/bininfer/src/include/utils.hpp
 
+
+/Users/kali/Desktop/GitHub/bininfer/src/include/functions.hpp:
 
 /Users/kali/Desktop/GitHub/bininfer/src/include/binobj.hpp:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/share/asan_ignorelist.txt:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stdint.h:
+
+/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stddef.h:
+
+/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stdarg.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/fill.h:
 
@@ -1354,6 +1363,8 @@ CMakeFiles/meow.dir/src/main.cpp.o: /Users/kali/Desktop/GitHub/bininfer/src/main
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_rvalue_reference.h:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__threading_support:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/swappable.h:
@@ -1587,6 +1598,8 @@ CMakeFiles/meow.dir/src/main.cpp.o: /Users/kali/Desktop/GitHub/bininfer/src/main
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/insert_iterator.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/default_sentinel.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/data.h:
 
@@ -1875,8 +1888,6 @@ CMakeFiles/meow.dir/src/main.cpp.o: /Users/kali/Desktop/GitHub/bininfer/src/main
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/libkern/i386/_OSByteOrder.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/remove_if.h:
-
-/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stddef.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/istream:
 
@@ -2185,8 +2196,6 @@ CMakeFiles/meow.dir/src/main.cpp.o: /Users/kali/Desktop/GitHub/bininfer/src/main
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/move.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/ostream_iterator.h:
-
-/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stdarg.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/directory_iterator.h:
 
