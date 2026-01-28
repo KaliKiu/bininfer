@@ -5,7 +5,7 @@
 
 class AnalysisContext{
     private:
-        std::map<uint8_t,std::size_t> BinaryFrequency;
+        std::vector<std::pair<std::size_t,uint8_t>>  BinaryFrequency;
     public:
         AnalysisContext()=default;
         AnalysisContext& operator=(const AnalysisContext& other){
@@ -15,10 +15,10 @@ class AnalysisContext{
             return *this;
         }
         //getters/setters
-        void setBinaryFrequency(std::map<uint8_t,std::size_t> BinaryFrequency_){
+        void setBinaryFrequency(std::vector<std::pair<std::size_t,uint8_t>> BinaryFrequency_){
             BinaryFrequency=BinaryFrequency_;
         }
-        std::map<uint8_t,std::size_t> getBinaryFrequency(){
+        std::vector<std::pair<std::size_t,uint8_t>> getBinaryFrequency(){
             return BinaryFrequency;
         }
 

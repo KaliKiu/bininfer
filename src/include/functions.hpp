@@ -23,6 +23,7 @@ namespace Function{
             std::cout <<std::dec <<static_cast<int>(c.first)<<std::hex <<": "<<static_cast<int>(c.second)<<std::endl;;
         }
         std::cout<<std::endl<<std::dec<<result.size()<<" bytes";
+        binobj.acx->setBinaryFrequency(result);
     }
 };
 #endif
