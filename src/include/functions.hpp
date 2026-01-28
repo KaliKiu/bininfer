@@ -25,5 +25,8 @@ namespace Function{
         std::cout<<std::endl<<std::dec<<result.size()<<" bytes";
         binobj.acx->setBinaryFrequency(result);
     }
+    void CalculateShannonEntropy(Binobj& binobj){
+        //calc global entropy!
+    }
 };
 #endif
