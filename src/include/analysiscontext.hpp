@@ -6,6 +6,8 @@
 class AnalysisContext{
     private:
         std::vector<std::pair<std::size_t,uint8_t>>  BinaryFrequency;
+        std::size_t byte_count_binfile;
+        double shannon_entropy;
     public:
         AnalysisContext()=default;
         AnalysisContext& operator=(const AnalysisContext& other){
@@ -20,6 +22,15 @@ class AnalysisContext{
         }
         std::vector<std::pair<std::size_t,uint8_t>> getBinaryFrequency(){
             return BinaryFrequency;
+        }
+        void setByteCountBinfile(std::size_t byte_count_binfile_){
+            byte_count_binfile = byte_count_binfile_;
+        }
+        std::size_t getByteCountBinfile()const{
+            return byte_count_binfile;
+        }
+        void setShannonEntropy(double shannon_entropy_){
+            shannon_entropy=shannon_entropy_;
         }
 
 };
