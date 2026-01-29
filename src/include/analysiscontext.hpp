@@ -20,7 +20,7 @@ class AnalysisContext{
         void setBinaryFrequency(std::vector<std::pair<std::size_t,uint8_t>> BinaryFrequency_){
             BinaryFrequency=BinaryFrequency_;
         }
-        std::vector<std::pair<std::size_t,uint8_t>> getBinaryFrequency(){
+        std::vector<std::pair<std::size_t,uint8_t>>& getBinaryFrequency(){
             return BinaryFrequency;
         }
         void setByteCountBinfile(std::size_t byte_count_binfile_){
@@ -31,6 +31,9 @@ class AnalysisContext{
         }
         void setShannonEntropy(double shannon_entropy_){
             shannon_entropy=shannon_entropy_;
+        }
+        double getShannonEntropy()const{
+            return shannon_entropy;
         }
 
 };

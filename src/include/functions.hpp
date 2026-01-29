@@ -28,14 +28,14 @@ namespace Function{
     }
     void CalculateShannonEntropy(Binobj& binobj){
         //calc global entropy!
-        std::size_t total_bytes=0;
+       std::size_t total_bytes=0;
         for(auto& t : binobj.acx->getBinaryFrequency()){
             total_bytes += t.first;
         }
         std::cout<<total_bytes<<std::endl;
         binobj.acx->setByteCountBinfile(total_bytes);
-        
         double shannon_entropy=0;
+        
         for(auto& t : binobj.acx->getBinaryFrequency()){
             double pi=t.first/static_cast<double>(binobj.acx->getByteCountBinfile());
             double contribution = pi*(std::log2(pi));
@@ -43,6 +43,8 @@ namespace Function{
         }
         shannon_entropy=(-1)*shannon_entropy;
         std::cout<<"shannon_entropy: "<<shannon_entropy<<std::endl;
+        binobj.acx->setShannonEntropy(shannon_entropy);
     }
+
 };
 #endif

@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <cctype>
 
+
 namespace Utils{
     std::string generateUUIDv4(){
         static std::random_device rd;
@@ -28,7 +29,8 @@ namespace Utils{
                 ss<<'-';
         }
         return ss.str();
-    }
+    } 
+    
 }
 
 #endif
