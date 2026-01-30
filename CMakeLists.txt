@@ -22,8 +22,9 @@ target_compile_options(meow PRIVATE
 	-Wnull-dereference 
 	-Wdouble-promotion
 	-Wformat=2
+	-Walloca
 	-g
-	-fsanitize=address,undefined 
+	-fsanitize=address,undefined
 	#-Werror (is good for pain ig..)
 )
 

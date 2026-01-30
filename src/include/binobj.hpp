@@ -75,6 +75,7 @@ class Binobj{
             if(!std::filesystem::remove(JSON_FILE_PATH)){
                 std::cout<<"Binobj Destructor: JsonFilefailed";
             }
+
         };
 
         void hexdump(){

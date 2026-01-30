@@ -2,6 +2,7 @@
 #define ANALYSISCONTEXT
 
 #include <map>
+#include "binobj.hpp"
 
 class AnalysisContext{
     private:
@@ -17,6 +18,9 @@ class AnalysisContext{
             }
             return *this;
         }
+        ~AnalysisContext(){
+
+        }   
         //getters/setters
         void setBinaryFrequency(std::vector<std::pair<std::size_t,uint8_t>> BinaryFrequency_){
             BinaryFrequency=BinaryFrequency_;

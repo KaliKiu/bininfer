@@ -69,28 +69,20 @@ namespace Function{
         binobj.acx->setShannonEntropy(shannon_entropy);
     }
     void CalculateBlockEntropy(Binobj& binobj){
-        std::cout<<"ok?";
         std::size_t blockSize = 1024; //bytes
         std::vector<std::pair<std::size_t,double>> BlockEntropy_;
-
-        const auto& bin = binobj.getBinary();
         
+        const auto& bin = binobj.getBinary();
         assert((static_cast<uint>(bin.size()/blockSize)+1)>0);
-        std::cout<<"hannado";
-        for(uint i{1}; i<static_cast<uint>(bin.size()/blockSize)+1;i++){
+        for(uint i{0}; i<static_cast<uint>(bin.size()/blockSize);i++){
             std::map<uint8_t,std::size_t> map;
-            std::vector<uint8_t> vecOffset(&bin[0],&bin[0]+(i*blockSize));
+            std::vector<uint8_t> vecOffset((i*blockSize)+&bin[0],((i+1)*blockSize)+&bin[0]);
             for(auto& t : vecOffset){
                 map[t]++;
             }
-            std::cout<<"meow";
-            std::vector<std::pair<std::size_t, uint8_t>> binFrequency;
-            for(auto & p : map){
-                binFrequency.push_back({p.second,p.first});
-            }
             double shannon_entropy = 0;
-            for(auto& m : binFrequency){
-                double pi = m.first/static_cast<double>(blockSize);
+            for(auto& m : map){
+                double pi = m.second/static_cast<double>(blockSize);
                 double contribution = pi*(std::log2(pi));
                 shannon_entropy+=contribution;
             }
