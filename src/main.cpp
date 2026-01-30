@@ -2,9 +2,9 @@
 #include "include/functions.hpp"
 
 int main(){
-    Binobj mytestfile("test.bin");
+
+    Binobj mytestfile("meow");
     std::cout << mytestfile.getFile_Size();
-    mytestfile.hexdump();
     
     Function::ByteFrequencyMap(mytestfile);
     Function::CalculateShannonEntropy(mytestfile);
