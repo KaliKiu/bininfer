@@ -9,6 +9,7 @@
 #include <cassert>
 #include <map>
 
+#include "json.hpp"
 #include "utils.hpp"
 #include "analysiscontext.hpp"
 
@@ -70,14 +71,32 @@ class Binobj{
                 return JSON_FILE_PATH_;
             }
 
-        ~Binobj(){
+        /*~Binobj(){
             //destruct obj, (delete file etc.)
             if(!std::filesystem::remove(JSON_FILE_PATH)){
                 std::cout<<"Binobj Destructor: JsonFilefailed";
             }
 
-        };
+        };*/
 
+        void writeToJson(){
+            nlohmann::json json;
+            std::ifstream file(JSON_FILE_PATH);
+            if(!file.good())std::cerr<<"writeToJson";
+            file>>json;
+            file.close();
+            json[Utils::Json::JSON_json_file_id] = json_file_id;
+            json[Utils::Json::JSON_file_path] = FILE_PATH;
+            json[Utils::Json::JSON_bin_file_size]=bin_file_size;
+            json[Utils::Json::JSON_shannon_entropy]=acx->getShannonEntropy();
+            json[Utils::Json::JSON_BlockEntropy] = acx->getBlockEntropy();
+            
+            std::ofstream out(JSON_FILE_PATH);
+            if(!out.good())std::cerr<<"writeToJson2";
+
+            out<<json.dump(4)<<std::endl;
+            std::cout<<"worked?";
+        }
         void hexdump(){
             int meow=0;
             for(auto& i :bin_file_vec){

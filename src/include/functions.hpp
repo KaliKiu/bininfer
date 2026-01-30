@@ -71,7 +71,7 @@ namespace Function{
     void CalculateBlockEntropy(Binobj& binobj){
         std::size_t blockSize = 1024; //bytes
         std::vector<std::pair<std::size_t,double>> BlockEntropy_;
-        
+
         const auto& bin = binobj.getBinary();
         assert((static_cast<uint>(bin.size()/blockSize)+1)>0);
         for(uint i{0}; i<static_cast<uint>(bin.size()/blockSize);i++){

@@ -8,7 +8,15 @@
 #include <cctype>
 
 
+
 namespace Utils{
+    namespace Json{
+        inline constexpr const char* JSON_json_file_id = "json_file_id";
+        inline constexpr const char* JSON_file_path = "FILE_PATH";
+        inline constexpr const char* JSON_bin_file_size = "bin_file_size";
+        inline constexpr const char* JSON_shannon_entropy= "shannon_entropy";
+        inline constexpr const char* JSON_BlockEntropy = "block_entropy";
+    }
     std::string generateUUIDv4(){
         static std::random_device rd;
         static std::mt19937 gen(rd());
