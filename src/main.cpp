@@ -9,5 +9,5 @@ int main(){
     Function::ByteFrequencyMap(mytestfile);
     Function::CalculateShannonEntropy(mytestfile);
 
-    std::cout<<"well worked";
+    Function::printWhatsGoingOn(mytestfile);
 }
