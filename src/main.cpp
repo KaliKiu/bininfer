@@ -9,6 +9,7 @@ int main(){
     Function::ByteFrequencyMap(mytestfile);
     Function::CalculateShannonEntropy(mytestfile);
     Function::CalculateBlockEntropy(mytestfile);
-
+    mytestfile.writeToJson();
+    
     Function::printWhatsGoingOn(mytestfile);
 }

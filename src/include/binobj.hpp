@@ -82,8 +82,8 @@ class Binobj{
         void writeToJson(){
             nlohmann::json json;
             std::ifstream file(JSON_FILE_PATH);
-            if(!file.good())std::cerr<<"writeToJson";
-            file>>json;
+            if(file.good()&&file.peek() != std::ifstream::traits_type::eof())file>>json;
+            
             file.close();
             json[Utils::Json::JSON_json_file_id] = json_file_id;
             json[Utils::Json::JSON_file_path] = FILE_PATH;
