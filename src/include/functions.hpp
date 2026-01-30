@@ -4,6 +4,7 @@
 #include <map>
 #include <algorithm>
 #include <cmath>
+#include <cassert>
 #include "binobj.hpp"
 
 namespace Function{
@@ -23,6 +24,11 @@ namespace Function{
             std::cout<<"Quite random";
         }
         std::cout<<std::endl;
+
+        std::cout<<"BlockEntropy"<<std::endl;
+        for(auto& t : binobj.acx->getBlockEntropy()){
+            std::cout<<t.first << " :" <<t.second<<std::endl;
+        }
 
     }
 //holds all methods from Stage 1-Stage 5
@@ -61,6 +67,33 @@ namespace Function{
         shannon_entropy=(-1)*shannon_entropy;
         binobj.acx->setShannonEntropy(shannon_entropy);
     }
+    void CalculateBlockEntropy(Binobj& binobj){
+        std::size_t blockSize = 1024; //bytes
+        std::vector<std::pair<std::size_t,double>> BlockEntropy_;
 
+        const auto& bin = binobj.getBinary();
+        
+        assert((static_cast<uint>(bin.size()/blockSize)+1)>0);
+
+        for(uint i{1}; i<static_cast<uint>(bin.size()/blockSize)+1;i++){
+            std::map<uint8_t,std::size_t> map;
+            std::vector<uint8_t> vecOffset(&bin[0],&bin[0]+blockSize);
+            for(auto& t : vecOffset){
+                map[t]++;
+            }
+            std::vector<std::pair<std::size_t, uint8_t>> binFrequency;
+            for(auto & p : map){
+                binFrequency.push_back({p.second,p.first});
+            }
+            double shannon_entropy = 0;
+            for(auto& m : binFrequency){
+                double pi = m.first/static_cast<double>(blockSize);
+                double contribution = pi*(std::log2(pi));
+                shannon_entropy+=contribution;
+            }
+            BlockEntropy_.push_back({static_cast<std::size_t>(i*blockSize),((-1)*shannon_entropy)});
+        }
+        binobj.acx->setBlockEntropy(BlockEntropy_);
+    }
 };
 #endif

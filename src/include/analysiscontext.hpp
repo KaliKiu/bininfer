@@ -6,6 +6,7 @@
 class AnalysisContext{
     private:
         std::vector<std::pair<std::size_t,uint8_t>>  BinaryFrequency;
+        std::vector<std::pair<std::size_t,double>> BlockEntropy;
         std::size_t byte_count_binfile;
         double shannon_entropy;
     public:
@@ -34,6 +35,12 @@ class AnalysisContext{
         }
         double getShannonEntropy()const{
             return shannon_entropy;
+        }
+        void setBlockEntropy(std::vector<std::pair<std::size_t,double>> BlockEntropy_){
+            BlockEntropy = BlockEntropy_;
+        }
+        std::vector<std::pair<std::size_t,double>>& getBlockEntropy(){
+            return BlockEntropy;
         }
 
 };
