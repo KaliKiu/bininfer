@@ -80,7 +80,7 @@ class Binobj{
         };*/
 
         void writeToJson(){
-            nlohmann::json json;
+            nlohmann::ordered_json json;
             std::ifstream file(JSON_FILE_PATH);
             if(file.good()&&file.peek() != std::ifstream::traits_type::eof())file>>json;
             
