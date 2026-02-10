@@ -16,3 +16,6 @@
 * Alignment Detection
 
 ->Stage 1 Outputs Region map,Probable Headers etc
+
+
+-> STAGE 2 PLANNING DONE
